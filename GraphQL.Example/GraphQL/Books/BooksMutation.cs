@@ -2,14 +2,14 @@ using GraphQL.Example.Data;
 using GraphQL.Example.Domain.Entities;
 using GraphQL.Types;
 
-namespace GraphQL.Example.GraphQl.Notes
+namespace GraphQL.Example.GraphQL.Books
 {
-  public class NotesMutation : ObjectGraphType
+  public class BooksMutation : ObjectGraphType
   {
-    public NotesMutation()
+    public BooksMutation()
     {
-      Field<NoteType>(
-        "createNote",
+      Field<BookType>(
+        "createBook",
         arguments: new QueryArguments(
           new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "message" }
         ),
@@ -17,12 +17,15 @@ namespace GraphQL.Example.GraphQl.Notes
         {
           var message = context.GetArgument<string>("message");
           var dataContext = context?.RequestServices?.GetRequiredService<DataContext>();
-          var note = new Note { Message = message };
+          var book = new Book
+          {
 
-          dataContext?.Notes.Add(note);
+          };
+
+          dataContext?.Books.Add(book);
           dataContext?.SaveChanges();
 
-          return note;
+          return book;
         }
       );
     }

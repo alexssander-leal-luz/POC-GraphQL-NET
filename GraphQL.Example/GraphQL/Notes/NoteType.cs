@@ -1,7 +1,7 @@
 using GraphQL.Example.Domain.Entities;
 using GraphQL.Types;
 
-namespace GraphQLNetExample.Notes
+namespace GraphQL.Example.GraphQl.Notes
 {
   public class NoteType : ObjectGraphType<Note>
   {

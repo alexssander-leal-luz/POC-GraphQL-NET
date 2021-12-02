@@ -1,10 +1,11 @@
 using System.Text.Json.Serialization;
-using Estudos.BaltaIO.Tarefas.Data;
+using GraphQL.Example.Data;
+using GraphQL.Example.GraphQl.Notes;
+using GraphQL.Example.GraphQL.Books;
 using GraphQL.MicrosoftDI;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
 using GraphQL.Types;
-using GraphQLNetExample.Notes;
 using Microsoft.EntityFrameworkCore;
 using Telluria.Utils.Crud;
 
@@ -20,10 +21,15 @@ var version = new Version(
 // Add services to the container.
 // Add notes schema
 builder.Services.AddSingleton<ISchema, NotesSchema>(services => new NotesSchema(new SelfActivatingServiceProvider(services)));
+// builder.Services.AddSingleton<ISchema, BooksSchema>(services => new BooksSchema(new SelfActivatingServiceProvider(services)));
 
 // Add CORS policy
 builder.Services.AddCors(options =>
-  options.AddPolicy("AllowAllOriginsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
+{
+  options.AddDefaultPolicy(builder =>
+    builder.WithOrigins("*").AllowAnyHeader());
+});
+
 
 // Connection of DB
 builder.Services.AddDbContext<DataContext>(options => options
@@ -54,6 +60,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 app.UseAuthorization();
 app.MapControllers();
 

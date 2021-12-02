@@ -11,6 +11,6 @@ namespace GraphQL.Example.Domain.Entities
       Message = message;
     }
 
-    public string Message { get; set; }
+    public string? Message { get; set; }
   }
 }

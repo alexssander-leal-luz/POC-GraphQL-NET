@@ -1,7 +1,6 @@
-using GraphQL.Example.GraphQl.Notes;
 using GraphQL.Types;
 
-namespace GraphQLNetExample.Notes
+namespace GraphQL.Example.GraphQl.Notes
 {
   public class NotesSchema : Schema
   {

@@ -3,6 +3,7 @@ using System;
 using GraphQL.Example.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,13 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GraphQL.Example.Migrations
 {
   [DbContext(typeof(DataContext))]
-  partial class DataContextModelSnapshot : ModelSnapshot
+  [Migration("20211202031051_InitialMigration")]
+  partial class InitialMigration
   {
-    protected override void BuildModel(ModelBuilder modelBuilder)
+    protected override void BuildTargetModel(ModelBuilder modelBuilder)
     {
       modelBuilder
-      .HasAnnotation("ProductVersion", "6.0.0")
-      .HasAnnotation("Relational:MaxIdentifierLength", 64);
+        .HasAnnotation("ProductVersion", "6.0.0")
+        .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
       modelBuilder.Entity("GraphQL.Example.Domain.Entities.Book", b =>
       {
