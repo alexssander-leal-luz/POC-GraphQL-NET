@@ -1,3 +1,4 @@
+using GraphQL.Example.Controllers;
 using GraphQL.Example.Data;
 using GraphQL.Example.Domain.Entities;
 using GraphQL.Types;
@@ -19,7 +20,7 @@ namespace GraphQL.Example.GraphQl.Notes
           var dataContext = context?.RequestServices?.GetRequiredService<DataContext>();
           var note = new Note { Message = message };
 
-          dataContext?.Notes.Add(note);
+          dataContext?.Notes?.Add(note);
           dataContext?.SaveChanges();
 
           return note;

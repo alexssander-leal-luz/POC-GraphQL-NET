@@ -9,9 +9,9 @@ namespace GraphQL.Example.GraphQl.Notes
     {
       Name = "Note";
       Description = "Note Type";
-      Field(d => d.Id, nullable: false).Description("Note Id");
-      Field(d => d.Message, nullable: true).Description("Note Message");
-      Field(d => d.Deleted, nullable: true).Description("Note Deleted");
+      Field(d => d.Id).Description("Note Id");
+      Field(d => d.Message).Description("Note Message");
+      Field(d => d.Deleted).Description("Note Deleted");
     }
   }
 }

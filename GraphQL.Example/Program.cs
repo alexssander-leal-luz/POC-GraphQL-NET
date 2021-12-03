@@ -1,7 +1,6 @@
 using System.Text.Json.Serialization;
 using GraphQL.Example.Data;
 using GraphQL.Example.GraphQl.Notes;
-using GraphQL.Example.GraphQL.Books;
 using GraphQL.MicrosoftDI;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
@@ -21,7 +20,6 @@ var version = new Version(
 // Add services to the container.
 // Add notes schema
 builder.Services.AddSingleton<ISchema, NotesSchema>(services => new NotesSchema(new SelfActivatingServiceProvider(services)));
-// builder.Services.AddSingleton<ISchema, BooksSchema>(services => new BooksSchema(new SelfActivatingServiceProvider(services)));
 
 // Add CORS policy
 builder.Services.AddCors(options =>
