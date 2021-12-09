@@ -1,12 +1,20 @@
 using System.Text.Json.Serialization;
 using GraphQL.Example.Data;
-using GraphQL.Example.GraphQl.Notes;
+using GraphQL.Example.GraphQL;
 using GraphQL.MicrosoftDI;
 using GraphQL.Server;
 using GraphQL.SystemTextJson;
 using GraphQL.Types;
 using Microsoft.EntityFrameworkCore;
 using Telluria.Utils.Crud;
+
+// ValidatorInstanceCache validatorCache = new();
+// validatorCache.AddValidatorsFromAssembly(typeof(Book).Assembly);
+
+// Schema schema = new();
+// schema.UseFluentValidation();
+
+// DocumentExecuter executer = new();
 
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -19,7 +27,7 @@ var version = new Version(
 
 // Add services to the container.
 // Add notes schema
-builder.Services.AddSingleton<ISchema, NotesSchema>(services => new NotesSchema(new SelfActivatingServiceProvider(services)));
+builder.Services.AddSingleton<ISchema, GraphQLMainSchema>(services => new GraphQLMainSchema(new SelfActivatingServiceProvider(services)));
 
 // Add CORS policy
 builder.Services.AddCors(options =>

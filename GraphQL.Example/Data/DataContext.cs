@@ -8,7 +8,6 @@ namespace GraphQL.Example.Data
   {
     public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-    public DbSet<Note>? Notes { get; set; }
     public DbSet<Book>? Books { get; set; }
     public DbSet<Publisher>? Publishers { get; set; }
 
@@ -16,7 +15,6 @@ namespace GraphQL.Example.Data
     {
       base.OnModelCreating(modelBuilder);
 
-      modelBuilder.ApplyConfiguration(new NoteMap());
       modelBuilder.ApplyConfiguration(new BookMap());
       modelBuilder.ApplyConfiguration(new PublisherMap());
     }

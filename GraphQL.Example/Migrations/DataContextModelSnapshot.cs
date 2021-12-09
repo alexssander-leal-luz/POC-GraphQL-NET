@@ -15,8 +15,8 @@ namespace GraphQL.Example.Migrations
     protected override void BuildModel(ModelBuilder modelBuilder)
     {
       modelBuilder
-      .HasAnnotation("ProductVersion", "6.0.0")
-      .HasAnnotation("Relational:MaxIdentifierLength", 64);
+        .HasAnnotation("ProductVersion", "6.0.0")
+        .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
       modelBuilder.Entity("GraphQL.Example.Domain.Entities.Book", b =>
       {
@@ -72,34 +72,6 @@ namespace GraphQL.Example.Migrations
         b.HasIndex("PublisherId");
 
         b.ToTable("reg_books", (string)null);
-      });
-
-      modelBuilder.Entity("GraphQL.Example.Domain.Entities.Note", b =>
-      {
-        b.Property<Guid>("Id")
-          .ValueGeneratedOnAdd()
-          .HasColumnType("char(36)");
-
-        b.Property<DateTime>("CreatedAt")
-          .HasColumnType("datetime(6)");
-
-        b.Property<bool>("Deleted")
-          .HasColumnType("tinyint(1)");
-
-        b.Property<DateTime?>("DeletedAt")
-          .HasColumnType("datetime(6)");
-
-        b.Property<string>("Message")
-          .IsRequired()
-          .HasColumnType("varchar(100)")
-          .HasColumnName("message");
-
-        b.Property<DateTime?>("UpdatedAt")
-          .HasColumnType("datetime(6)");
-
-        b.HasKey("Id");
-
-        b.ToTable("reg_notes", (string)null);
       });
 
       modelBuilder.Entity("GraphQL.Example.Domain.Entities.Publisher", b =>

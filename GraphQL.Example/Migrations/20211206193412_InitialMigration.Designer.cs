@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GraphQL.Example.Migrations
 {
   [DbContext(typeof(DataContext))]
-  [Migration("20211202031051_InitialMigration")]
+  [Migration("20211206193412_InitialMigration")]
   partial class InitialMigration
   {
     protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -74,34 +74,6 @@ namespace GraphQL.Example.Migrations
         b.HasIndex("PublisherId");
 
         b.ToTable("reg_books", (string)null);
-      });
-
-      modelBuilder.Entity("GraphQL.Example.Domain.Entities.Note", b =>
-      {
-        b.Property<Guid>("Id")
-          .ValueGeneratedOnAdd()
-          .HasColumnType("char(36)");
-
-        b.Property<DateTime>("CreatedAt")
-          .HasColumnType("datetime(6)");
-
-        b.Property<bool>("Deleted")
-          .HasColumnType("tinyint(1)");
-
-        b.Property<DateTime?>("DeletedAt")
-          .HasColumnType("datetime(6)");
-
-        b.Property<string>("Message")
-          .IsRequired()
-          .HasColumnType("varchar(100)")
-          .HasColumnName("message");
-
-        b.Property<DateTime?>("UpdatedAt")
-          .HasColumnType("datetime(6)");
-
-        b.HasKey("Id");
-
-        b.ToTable("reg_notes", (string)null);
       });
 
       modelBuilder.Entity("GraphQL.Example.Domain.Entities.Publisher", b =>
